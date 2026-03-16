@@ -132,8 +132,8 @@ function App() {
             position: 'absolute', 
             bottom: '45px',   /* Sits above the Home Indicator */
             right: '25px',
-            width: '60px', 
-            height: '60px', 
+            width: '55px', 
+            height: '55px', 
             borderRadius: '50%', 
             backgroundColor: '#4CAF50', 
             color: 'white', 
@@ -141,7 +141,8 @@ function App() {
             fontSize: '30px', 
             boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
             cursor: 'pointer',
-            zIndex: 1000      /* Ensures it stays on top of transactions */
+            zIndex: 1000,      /* Ensures it stays on top of transactions */
+            opacity:'85%'
           }}
         >
           +

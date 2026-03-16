@@ -40,15 +40,17 @@ export default function TransactionDetails({ transaction, onBack }) {
           <h2 style={{ fontSize:'20px',textAlign: 'center', margin: '10px 0 10px 0', color: '#2d3e26' }}>Transaction Details</h2>
         </div>
         <div style={{padding: '0 20px 30px 20px'}}>
-          <div style={{ textAlign: 'center', margin: '20px 0' }}>
+          <div style={{ textAlign: 'center', margin: '15px 0' }}>
             <p style={{ color: '#555' }}>Amount:</p>
             <h1 style={{ fontSize: '2rem' }}>MYR {transaction.amount}</h1>
           </div>
 
-          <div style={{ lineHeight: '2' }}>
+          <div style={{ lineHeight: '1.5' }}>
+            <p><strong>Name</strong><br/> {transaction.name}</p>
             <p><strong>Date</strong><br/> {transaction.date}</p>
             <p><strong>Reference Number</strong><br/> {transaction.id}</p>
             <p><strong>Location</strong><br/> {transaction.location}</p>
+            <p><strong>References</strong><br/> {transaction.references}</p>
           </div>
         </div>
       </div>

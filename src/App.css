@@ -40,7 +40,7 @@
 }
 
 .balance-text {
-  font-size: 2.5rem;           /* Keeps it nice and bold */
+  font-size: 35px;           /* Keeps it nice and bold */
   font-weight: 800;
   color: #2d3e26;           /* Your MonkeyPouch dark green */
   margin: 15px 0;
@@ -61,4 +61,12 @@
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto; /* Content scrolls here */
+}
+
+.balance-card {
+  background: linear-gradient(180deg, #43553b 0%, #7ba368 100%);
+  border-radius: 15px; /* Adjust for that rounded look */
+  padding: 25px;
+  color: #2c2c2c; /* Dark text for readability */
+  margin-bottom: 10px;
 }
