@@ -80,8 +80,9 @@ function App() {
             // Checks the pin against the user object
             if(enteredPin === user.pin) {
               setPage('verifying');
+              return true;
             } else {
-              alert("Wrong PIN!");
+              return false;
             }
           }} />;
 

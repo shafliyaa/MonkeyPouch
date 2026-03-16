@@ -1,5 +1,19 @@
-.app-container {
+/* In App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased; /* Makes it look extra sharp on Mac/iPhone */
+}
+
+/* Use the 800 weight for your Balance and Headers */
+.balance-text, h2, h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em; /* Makes big headers look more "designed" */
+}
+
+.app-container {
   height: 90vh;             /* Use 90% of the screen height */
   aspect-ratio: 9 / 19.5;
   margin: 20px auto;

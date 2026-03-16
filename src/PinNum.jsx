@@ -2,10 +2,14 @@ import { useState, useEffect } from 'react';
 
 export default function PinPad({ onBack, onComplete }) {
   const [pin, setPin] = useState([]);
+  const [error, setError] = useState(false);
+
   const keys = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "⌫"];
 
   // 1. ADD THIS FUNCTION BACK IN: This is the "Engine" that makes buttons work
   const handleKeyPress = (key) => {
+    if (error) return;
+
     if (key === "⌫") {
       // Deletes the last number
       setPin(pin.slice(0, -1));
@@ -18,8 +22,17 @@ export default function PinPad({ onBack, onComplete }) {
   useEffect(() => {
     if (pin.length === 4) {
       const enteredPin = pin.join(''); 
+      
       setTimeout(() => {
-        onComplete(enteredPin); 
+        const isCorrect = onComplete(enteredPin); 
+        
+        if (!isCorrect) {
+          setError(true); // Trigger error visuals
+          setTimeout(() => {
+            setPin([]); // Clear PIN after a delay
+            setError(false); // Reset error state
+          }, 1000);
+        }
       }, 300);
     }
   }, [pin, onComplete]);
@@ -36,7 +49,7 @@ export default function PinPad({ onBack, onComplete }) {
       marginTop: '50px'
     }}>
       <div className="green-card" style={{ 
-        backgroundColor: '#94b486', 
+        backgroundColor: error ? '#fccfcf' : '#94b486', 
         borderRadius: '20px',
         borderTopLeftRadius: '50px',
         borderTopRightRadius: '50px',
@@ -46,6 +59,8 @@ export default function PinPad({ onBack, onComplete }) {
         overflow: 'hidden',
         boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
       }}>
+
+
         <div style={{ padding: '20px 20px 10px 20px', position: 'relative' }}>
           <button 
             onClick={onBack} 
@@ -59,19 +74,28 @@ export default function PinPad({ onBack, onComplete }) {
           >
             X
           </button>
-          <h2 style={{ textAlign: 'center', paddingTop:'10px', margin: '10px 10px 20px 0', color: '#2d3e26' }}>Enter Your Pin Number</h2>
+          <h2 style={{ textAlign: 'center', paddingTop:'10px', color: '#2d3e26' }}>
+            {error ? "Authentication Failed" : "Enter Your Pin Number"}
+          </h2>
         </div>
+
+                {/* Error Message */}
+        {error && (
+          <p style={{ color: '#d32f2f', textAlign: 'center', fontWeight: 'bold', marginTop: '3px' }}>
+            Wrong PIN! Please try again.
+          </p>
+        )}
           
         {/* The 4 Dots */}
-        <div className="pin-dots" style={{ display: 'flex', gap: '20px', justifyContent: 'center', margin: '40px 0' }}>
+        <div className="pin-dots" style={{ display: 'flex', gap: '20px', justifyContent: 'center', margin: '40px 0', animation: error ? 'shake 2s' : 'none' }}>
           {[0, 1, 2, 3].map((index) => (
             <div key={index} style={{
               width: '24px', 
               height: '24px', 
               borderRadius: '50%',
               transition: 'all 0.2s ease',
-              backgroundColor: pin.length > index ? '#2d3e26' : '#fff',
-              border: '2px solid #2d3e26',
+              backgroundColor: error ? '#d32f2f' : (pin.length > index ? '#2d3e26' : '#fff'),
+              border: `2px solid ${error ? '#d32f2f' : '#2d3e26'}`,
               boxShadow: pin.length > index ? '0 0 10px rgba(45, 62, 38, 0.3)' : 'none'
             }} />
           ))}

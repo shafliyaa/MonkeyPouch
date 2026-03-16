@@ -14,9 +14,8 @@ export default function TransactionDetails({ transaction, onBack }) {
     }}>
       <div  className="green-card" style={{ 
         backgroundColor: '#94b486', 
-        borderRadius: '20px',    /* Smooth rounded corners */
-        borderTopLeftRadius: '50px',
-        borderTopRightRadius: '50px',
+        borderTopLeftRadius: '40px',
+        borderTopRightRadius: '40px',
         flex: 1,                 /* Fills the height exactly */
         display: 'flex',
         flexDirection: 'column',

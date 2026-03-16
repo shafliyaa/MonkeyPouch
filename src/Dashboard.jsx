@@ -1,4 +1,4 @@
-// REMOVE the import from './data' here—you are already passing it as a prop!
+import { useState } from 'react';
 
 export default function Dashboard({ name, transactions, balance, onSend, onKiki, onAllTransaction, onSelect }) {
   
@@ -19,8 +19,20 @@ export default function Dashboard({ name, transactions, balance, onSend, onKiki,
         overflowY: 'auto', 
         paddingBottom: '100px' 
       }}>
-        <p style={{fontSize:'17px', marginTop: '15px', color: '#333333' }}>Welcome, {name}</p>
-
+        <p style={{fontSize:'17px', marginTop: '15px', color: '#333333', marginBottom: '0'}}>Welcome, {name}</p>
+        <p style={{ 
+    fontSize: '12px', 
+    color: '#888', 
+    margin: '0px 0 15px 0' 
+  }}>
+    {new Date().toLocaleDateString('en-GB', { 
+      weekday: 'short', 
+      day: 'numeric', 
+      month: 'short', 
+      year: 'numeric' 
+    })}
+  </p>
+        
         <div className='balance-card'>
           <h3 style={{ marginTop: '5px', marginBottom: '5px',color: '#383838' ,fontSize:'15px' }}>Balance:</h3>
           <div className="balance-text">
