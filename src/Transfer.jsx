@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 export default function Transfer({balance, onBack, onNext}){
     const [formData, setFormData] = useState({ id: '', amount: '', ref: '' });
 
@@ -56,7 +57,7 @@ export default function Transfer({balance, onBack, onNext}){
         <div style={{padding: '0 20px 30px 20px'}}> 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
           <div className="input-group">
-            <label style={{ display: 'block', marginBottom: '10px' }}>MonkeyPouch ID:</label>
+            <label style={{ display: 'block', marginBottom: '10px' }}>MonkeyPouch ID/Name:</label>
             <input 
               name="id" value={formData.id} onChange={handleChange}
               style={{ width: '100%', background: 'transparent', border: 'none', borderBottom: '2px solid #2d3e26', outline: 'none', fontSize: '1.1rem' }} 

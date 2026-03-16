@@ -1,5 +1,6 @@
 import './App.css'
 import { useState } from 'react';
+import { mockTransactions } from './data';
 
 import Dashboard from './Dashboard';
 import KikiIntro from './KikiIntro';
@@ -21,6 +22,7 @@ function App() {
     pin: "1234" 
   });
 
+  const [transactions, setTransactions] = useState(mockTransactions);
   const [page, setPage] = useState('dashboard');
   const [selectedTx, setSelectedTx] = useState(null);
   const [previousPage, setPreviousPage] = useState('dashboard');
@@ -28,6 +30,21 @@ function App() {
   // 2. IMPORTANT: Added this missing state to store the ID and Amount
   const [transactionData, setTransactionData] = useState({ id: '', amount: 0 });
 
+
+  const now = new Date();
+
+  // Generates "16 Mar 2026"
+  const formattedDate = now.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  });
+
+  // Generates "March 2026"
+  const formattedMonth = now.toLocaleDateString('en-GB', {
+    month: 'long',
+    year: 'numeric'
+  });
   const renderPage = () => {
     switch(page) {
       case 'dashboard': 
@@ -36,6 +53,7 @@ function App() {
           balance={user.balance} 
           onSend={() => setPage('transfer')} 
           onKiki={() => setPage('intro')} 
+          transactions={transactions}
           onAllTransaction={() => setPage('allTransaction')}
           onSelect={(tx) => { 
             setSelectedTx(tx); 
@@ -70,6 +88,7 @@ function App() {
       case 'allTransaction':
         return <AllTransactions 
           onBack={() => setPage('dashboard')} 
+          transactions={transactions}
           onSelect={(tx) => { 
             setSelectedTx(tx); 
             setPage('transactionsDetails'); 
@@ -78,20 +97,45 @@ function App() {
         />;
 
       case 'verifying':
-        return <Verifying 
-          data={transactionData} 
-          onFinish={(isSafe) => {
-            if (isSafe) {
-              // Updates the state so the Dashboard and ResultScreen are in sync
-              setUser(prev => ({ 
-                ...prev, 
-                balance: prev.balance - parseFloat(transactionData.amount) 
-              }));
-              setPage('success');
-            } else {
-              setPage('unsuccess');
-            }
-          }} />;
+  return <Verifying 
+    data={transactionData} 
+    onFinish={(isSafe) => {
+      if (isSafe) {
+        const amountNum = parseFloat(transactionData.amount);
+
+        const maxId = transactions.length > 0 
+          ? Math.max(...transactions.map(t => parseInt(t.id))) 
+          : 130909;
+        
+        const nextId = (maxId + 1).toString();
+
+        // 1. Update Balance
+        setUser(prev => ({ 
+          ...prev, 
+          balance: prev.balance - amountNum 
+        }));
+
+        // 2. Create the new transaction matching your data.js format
+        const newTx = {
+          id: nextId, // String to match your mock data IDs
+          name: transactionData.id || "Transfer", 
+          amount: amountNum.toFixed(2), // Keep it as a string "50.00" to match your data
+          date: now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+          month: now.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }),
+          location: "Kuala Lumpur, MY", // You can hardcode this or use GeoLocation if feeling fancy
+          references: transactionData.ref || "Money Transfer" // Pull from your Transfer form state
+        };
+
+        // 3. Add to the top of the list
+        setTransactions([newTx, ...transactions]);
+
+        setTransactionData(prev => ({ ...prev, generatedId: nextId }));
+
+        setPage('success');
+      } else {
+        setPage('unsuccess');
+      }
+    }} />;
 
       case 'success':
       case 'unsuccess':

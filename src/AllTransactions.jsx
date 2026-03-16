@@ -1,10 +1,7 @@
- 
-import { mockTransactions } from './data';
-
-export default function AllTransactions({ onBack, onSelect }) {
+ export default function AllTransactions({ transactions, onBack, onSelect }) {
   
   // 1. Group the transactions by month first
-  const grouped = mockTransactions.reduce((acc, tx) => {
+  const grouped = transactions.reduce((acc, tx) => {
     if (!acc[tx.month]) {
       acc[tx.month] = [];
     }

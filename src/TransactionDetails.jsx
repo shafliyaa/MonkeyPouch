@@ -46,7 +46,7 @@ export default function TransactionDetails({ transaction, onBack }) {
           </div>
 
           <div style={{ lineHeight: '1.5' }}>
-            <p><strong>Name</strong><br/> {transaction.name}</p>
+            <p><strong>MonkeyPouch ID/Name</strong><br/> {transaction.name}</p>
             <p><strong>Date</strong><br/> {transaction.date}</p>
             <p><strong>Reference Number</strong><br/> {transaction.id}</p>
             <p><strong>Location</strong><br/> {transaction.location}</p>
