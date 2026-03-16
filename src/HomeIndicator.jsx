@@ -1,14 +1,12 @@
-import React from 'react';
-
 export default function HomeIndicator() {
   return (
     <div style={{
       width: '100%',
-      height: '8px',          /* Space at the bottom */
+      height: '20px',          /* Space at the bottom */
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'transparent',
+      backgroundColor: 'none',
       paddingBottom: '5px'
     }}>
       <div style={{

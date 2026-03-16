@@ -33,7 +33,7 @@ export default function ResultScreen({ status, onDone }) {
       <button 
         className="btn-primary" 
         onClick={onDone}
-        style={{ backgroundColor: current.color, marginTop: 'auto' }}
+        style={{ backgroundColor: current.color, marginTop: '80px' }}
       >
         Back to Home
       </button>

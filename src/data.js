@@ -11,3 +11,5 @@ export const mockTransactions = [
   { id: '9', name: 'Grocery Store', amount: '30.00', date: '01 Feb 2026', month: 'February 2026', location: 'Ipoh' },
   { id: '10', name: 'Book Store', amount: '20.00', date: '31 Dec 2025', month: 'December 2025', location: 'Ipoh' },
 ];
+
+//amount hour location transaction_type

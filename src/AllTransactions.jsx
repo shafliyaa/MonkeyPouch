@@ -24,7 +24,7 @@ export default function AllTransactions({ onBack, onSelect }) {
       backgroundColor: '#fff',   /* Matches the phone's interior */
       display: 'flex',
       flexDirection: 'column',
-      marginTop: '50px'
+      marginTop: '30px'
     }}>
       
       <div className="green-card" style={{ 

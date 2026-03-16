@@ -1,7 +1,7 @@
 import './App.css'
 import { useState } from 'react';
 
-import Dashboard from './dashboard';
+import Dashboard from './Dashboard';
 import KikiIntro from './KikiIntro';
 import Transfer from './Transfer';
 import PinNum from './PinNum';
@@ -116,9 +116,38 @@ function App() {
     <div className='app-container'>
       <StatusBar />
 
-<div className="content-scroll-area" style={{ flex: 1, overflowY: 'auto' }}>
+      <div className="main-content" style={{ 
+        flex: 1, 
+        display: 'flex', 
+        flexDirection: 'column', 
+        overflow: 'hidden' // Default is NO SCROLL
+      }}>
         {renderPage()}
       </div>
+
+      {page === 'dashboard' && (
+        <button 
+          onClick={() => setPage('transfer')}
+          style={{ 
+            position: 'absolute', 
+            bottom: '45px',   /* Sits above the Home Indicator */
+            right: '25px',
+            width: '60px', 
+            height: '60px', 
+            borderRadius: '50%', 
+            backgroundColor: '#4CAF50', 
+            color: 'white', 
+            border: 'none', 
+            fontSize: '30px', 
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+            cursor: 'pointer',
+            zIndex: 1000      /* Ensures it stays on top of transactions */
+          }}
+        >
+          +
+        </button>
+      )}
+
       <HomeIndicator />
     </div>
   )

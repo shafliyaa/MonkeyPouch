@@ -18,13 +18,13 @@ export default function Dashboard({ name, balance, onSend, onKiki, onAllTransact
       <div style={{flex: 1,           /* Takes up all available space */
         overflowY: 'auto',  /* Makes only this part scrollable! */
         paddingBottom: '100px' /* Space for the button so it doesn't block the last item */}}>
-      <p style={{ marginTop: '10px', color: '#666' }}>Welcome, {name}</p>
-      <h3 style={{ marginTop: '30px', marginBottom: '5px' }}>Balance:</h3>
-      
-      {/* --- ADD THE CLASS HERE --- */}
-      <div className="balance-text">
-        RM {parseFloat(balance).toFixed(2)}
-      </div>
+        <p style={{ marginTop: '10px', color: '#666' }}>Welcome, {name}</p>
+        <h3 style={{ marginTop: '30px', marginBottom: '5px' }}>Balance:</h3>
+        
+        {/* --- ADD THE CLASS HERE --- */}
+        <div className="balance-text">
+          RM {parseFloat(balance).toFixed(2)}
+        </div>
 
         <section onClick={onKiki} style={{ background: '#e8f5e9', padding: '10px', borderRadius: '10px', cursor: 'pointer' }}>
           <p>🛡️ KiKi is protecting your wallet</p>
@@ -44,22 +44,6 @@ export default function Dashboard({ name, balance, onSend, onKiki, onAllTransact
             <strong>RM {tx.amount}</strong>
           </div>
         ))}
-      </div>
-
-      <div className="fab-container" style={{ 
-        position: 'absolute', 
-        bottom: '70px', 
-        right: '20px',
-        zIndex: 10,
-        alignSelf: 'center' }}>
-        <button 
-          onClick={onSend}
-          className="fab-button"
-          style={{ position: 'static',  borderRadius: '50%', width: '60px', height: '60px', backgroundColor: '#4CAF50', color: 'white', border: 'none', fontSize: '24px', boxShadow: '0 4px 8px rgba(0,0,0,0.2)'  }} // Overrides the absolute position
-        >
-          +
-        </button>
-
       </div>
     </div>
   );

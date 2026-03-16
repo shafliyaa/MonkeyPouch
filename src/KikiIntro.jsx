@@ -1,6 +1,9 @@
 export default function KikiIntro({onBack}){
     return(
-        <div style={{padding: '0 20px 30px 20px'}}>
+        <div style={{flex: 1,           /* Takes up all available space */
+        overflowY: 'auto',  /* Makes only this part scrollable! */
+        paddingBottom: '100px',
+        padding: '0 20px 30px 20px'}}>
             <button onClick={onBack} style={{background:'none', border: 'none', fontSize: '30px', marginTop:"15px"}}>↩</button>
             <h1>KiKi - Your AI Partner</h1>
             <p>"Hi! I’m Kiki, your personal money guard. I stay awake 24/7 to watch your wallet. 

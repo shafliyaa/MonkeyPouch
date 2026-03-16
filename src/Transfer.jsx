@@ -25,7 +25,7 @@ export default function Transfer({balance, onBack, onNext}){
       backgroundColor: '#fff',   /* Matches the phone's interior */
       display: 'flex',
       flexDirection: 'column',
-      marginTop: '50px'
+      marginTop: '30px'
     }}>
             <div className="green-card" style={{ 
         backgroundColor: '#94b486', 

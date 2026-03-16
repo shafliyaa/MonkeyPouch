@@ -86,7 +86,7 @@ export default function PinPad({ onBack, onComplete }) {
               key={i} 
               onClick={() => handleKeyPress(key)} // This now has a function to call!
               style={{ 
-                height: '70px', 
+                height: '45px', 
                 fontSize: '24px', 
                 borderRadius: '15px', 
                 border: 'none',
