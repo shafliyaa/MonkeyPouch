@@ -1,33 +1,41 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from xgboost import XGBClassifier
+import xgboost as xgb
+import pandas as pd
 import numpy as np
 
-# 1. Start the FastAPI application
 app = FastAPI()
 
-# 2. Re-upload the model we saved earlier.
-model = XGBClassifier()
-model.load_model('fraud_model.json')
+model = xgb.Booster()
+model.load_model("fraud_model.json")
 
-# 3. Define what the data your friend (Teammate B) will send looks like.
+COLUMN_NAMES = [
+    'Time', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10', 
+    'V11', 'V12', 'V13', 'V14', 'V15', 'V16', 'V17', 'V18', 'V19', 'V20', 
+    'V21', 'V22', 'V23', 'V24', 'V25', 'V26', 'V27', 'V28', 'Amount'
+]
+
 class Transaction(BaseModel):
-    features: list  # Your friend will send you a list of numbers (V1, V2, Amount, etc.)
+    features: list
 
-@app.get("/")
-def home():
-    return {"message": "Fraud Detection API is Running"}
-
-# 4. Function to receive transaction data and give results
 @app.post("/predict")
-def predict_fraud(data: Transaction):
-    # Convert data into a format that the model understands
-    input_data = np.array([data.features])
-    
-    # Make predictions
-    prediction = model.predict(input_data)
-    
-    # 0 = Approve, 1 = Block/Flag (Ikut Case Study 2)
-    result = "Block" if prediction[0] == 1 else "Approve"
-    
-    return {"status": result}
+def predict(data: Transaction):
+    try:
+        if len(data.features) != 30:
+            return {"error": f"Model expects 30 features, but got {len(data.features)}"}
+
+        df = pd.DataFrame([data.features], columns=COLUMN_NAMES)
+        
+        dmatrix_data = xgb.DMatrix(df)
+        
+        prediction = model.predict(dmatrix_data)
+        score = float(prediction[0])
+        
+        status = "Block" if score > 0.5 else "Approve"
+        
+        return {
+            "status": status,
+            "fraud_probability": round(score, 4)
+        }
+    except Exception as e:
+        return {"error": str(e)}
