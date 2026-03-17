@@ -3,8 +3,16 @@ from pydantic import BaseModel
 import xgboost as xgb
 import pandas as pd
 import numpy as np
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # This allows YOUR React app to talk to HER Python app
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 model = xgb.Booster()
 model.load_model("fraud_model.json")
