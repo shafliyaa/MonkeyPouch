@@ -6,6 +6,7 @@ export default function KikiIntro({onBack}){
         padding: '0 20px 30px 20px'}}>
             <button onClick={onBack} style={{background:'none', border: 'none', fontSize: '30px', marginTop:"15px"}}>↩</button>
             <h1>KiKi - Your AI Partner</h1>
+            <img style={{width:'250px',height:'300px'}}src={"/public/Kiki.png"}/>
             <p>"Hi! I’m Kiki, your personal money guard. I stay awake 24/7 to watch your wallet. 
             If I see someone who isn't you trying to take your money, I’ll step in to stop them. 
             You don't have to do anything—I’ve got your back!"</p>

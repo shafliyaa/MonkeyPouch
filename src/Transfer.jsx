@@ -1,10 +1,23 @@
 import { useState } from "react";
 
 export default function Transfer({balance, onBack, onNext}){
-    const [formData, setFormData] = useState({ id: '', amount: '', ref: '' });
+  const [formData, setFormData] = useState({ id: '', amount: '', ref: '' });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleProceed = () => {
+    // We create a new object that includes the form data 
+    // PLUS the behavioral data for the AI
+    const behavioralData = {
+      ...formData,
+      location: "Subang Jaya, Selangor", // Hardcoded for demo
+      timestamp: new Date().toISOString(),
+      is_unusual_hours: new Date().getHours() > 22 || new Date().getHours() < 5,
+    };
+    
+    onNext(behavioralData);
   };
 
   const hasEnoughBalance = parseFloat(formData.amount) <= balance;
@@ -15,10 +28,10 @@ export default function Transfer({balance, onBack, onNext}){
     parseFloat(formData.amount) > 0 &&
     formData.ref.trim() !== "";
 
-    const canProceed = isFormComplete && hasEnoughBalance;
+  const canProceed = isFormComplete && hasEnoughBalance;
 
-    return(
-        <div className="page-wrapper" style={{ 
+  return(
+    <div className="page-wrapper" style={{ 
       height: '100%', 
       width: '100%',
       padding: '0px',           /* This creates the even white "frame" around the green */
@@ -28,9 +41,8 @@ export default function Transfer({balance, onBack, onNext}){
       flexDirection: 'column',
       marginTop: '30px'
     }}>
-            <div className="green-card" style={{ 
+      <div className="green-card" style={{ 
         backgroundColor: '#94b486', 
-       
         borderTopLeftRadius: '40px',
         borderTopRightRadius: '40px',
         flex: 1,                 /* Fills the height exactly */
@@ -39,7 +51,7 @@ export default function Transfer({balance, onBack, onNext}){
         overflow: 'hidden',      /* Keeps the scrollbar inside the green area */
         boxShadow: '0 4px 15px rgba(0,0,0,0.05)' /* Optional: subtle shadow for depth */
       }}>
-         <div style={{ padding: '20px 20px 10px 20px', position: 'relative' }}>
+        <div style={{ padding: '20px 20px 10px 20px', position: 'relative' }}>
           <button 
             onClick={onBack} 
             style={{ 
@@ -88,27 +100,28 @@ export default function Transfer({balance, onBack, onNext}){
           </p>
         )}
 
-<button 
-      onClick={() => onNext(formData)}
-      disabled={!canProceed}// 2. Disable button if form is incomplete
-      className="btn-primary" 
-      style={{ 
-        marginTop: '20px', 
-        backgroundColor: canProceed ? '#2d3e26' : '#6e6e6e', // 3. Change color to gray when disabled
-        color: 'white', 
-        padding: '15px', 
-        borderRadius: '12px', 
-        border: 'none', 
-        fontWeight: 'bold',
-        cursor: canProceed ? 'pointer' : 'not-allowed',
-        transition: 'background-color 0.3s ease'
-      }}
-    >
-      {hasEnoughBalance ? "Proceed" : "Check Balance"}
-    </button>
+          <button 
+            //onClick={() => onNext(formData)}
+            onClick={handleProceed}
+            disabled={!canProceed}// 2. Disable button if form is incomplete
+            className="btn-primary" 
+            style={{ 
+              marginTop: '20px', 
+              backgroundColor: canProceed ? '#2d3e26' : '#6e6e6e', // 3. Change color to gray when disabled
+              color: 'white', 
+              padding: '15px', 
+              borderRadius: '12px', 
+              border: 'none', 
+              fontWeight: 'bold',
+              cursor: canProceed ? 'pointer' : 'not-allowed',
+              transition: 'background-color 0.3s ease'
+            }}
+          >
+            {hasEnoughBalance ? "Proceed" : "Check Balance"}
+          </button>
         </div>
-            </div>
-        </div>
+      </div>
+    </div>
   </div>
   )
 }

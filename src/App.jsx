@@ -45,6 +45,17 @@ function App() {
     month: 'long',
     year: 'numeric'
   });
+
+  const getTransactionFrequency = () => {
+    // Use 'transactions' (the state) instead of 'mockTransactions'
+
+    const today = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }); 
+    const todaysTransfers = transactions.filter(tx => tx.date.includes(today)).length;
+
+    console.log(`[DEBUG] Frequency check for ${today}: ${todaysTransfers} transfers found.`);
+    return todaysTransfers;
+  };
+
   const renderPage = () => {
     switch(page) {
       case 'dashboard': 
@@ -100,7 +111,15 @@ function App() {
       case 'verifying':
   return <Verifying 
     data={transactionData} 
-    onFinish={(isSafe) => {
+    frequency={getTransactionFrequency()}
+    onFinish={(isSafe, riskScore, reason) => {
+              // Save the AI's reason for the failure screen
+        setTransactionData(prev => ({ 
+          ...prev, 
+          riskScore: riskScore, 
+          reason: reason 
+        }));
+
       if (isSafe) {
         const amountNum = parseFloat(transactionData.amount);
 
@@ -134,6 +153,8 @@ function App() {
 
         setPage('success');
       } else {
+
+
         setPage('unsuccess');
       }
     }} />;
@@ -144,7 +165,10 @@ function App() {
           status={page} 
           amount={transactionData.amount}
           newBalance={user.balance}
+          riskScore={transactionData.riskScore} 
+          reason={transactionData.reason}
           onDone={() => setPage('dashboard')} />;
+
 
       case 'transactionsDetails':
         return <TransactionDetails 

@@ -58,7 +58,7 @@ export default function Dashboard({ name, transactions, balance, onSend, onKiki,
               <strong>{tx.name}</strong><br/>
               <small style={{color: '#888'}}>{tx.date}</small>
             </div>
-            <strong style={{color: '#2e7d32'}}>RM {tx.amount}</strong>
+            <strong style={{color: '#b80000'}}>RM {tx.amount}</strong>
           </div>
         ))}
 
