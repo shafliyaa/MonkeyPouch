@@ -27,6 +27,7 @@ Unlike traditional wallet that only verify the user PIN number, Kiki analyzes th
 - Connectivity: Ngrok – Utilized as a secure tunnel to connect our local AI server to the live web frontend.
 
 ## 🚀 Future Roadmap
+We aren't stopping at fraud detection. MonkeyPouch is evolving into a complete financial ecosystem:
 
 - Voice-Activated Banking: The wallet will be activated when hear the user voice and special keyword - "Hello Kiki".
 
