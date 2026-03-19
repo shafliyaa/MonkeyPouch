@@ -28,11 +28,11 @@ Unlike traditional wallet that only verify the user PIN number, Kiki analyzes th
 
 ## 🚀 Future Roadmap
 
--Voice-Activated Banking: The wallet will be activated when hear the user voice and special keyword - "Hello Kiki".
+- Voice-Activated Banking: The wallet will be activated when hear the user voice and special keyword - "Hello Kiki".
 
--Gamified Financial Literacy: "KiKi Quests": The quest made by Kiki for the user to enjoy the benefit when the quest is completed.
+- Gamified Financial Literacy: "KiKi Quests": The quest made by Kiki for the user to enjoy the benefit when the quest is completed.
 
--Community-Based "Micro-Vouching": Add new user as friend in MonkeyPouch to lower their account risk.
+- Community-Based "Micro-Vouching": Add new user as friend in MonkeyPouch to lower their account risk.
 
 ## 👥 The Team: Bug Bunnies
 Shafiqa Aliya Binti Shahrul Azmi - Frontend & UI Design
