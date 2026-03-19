@@ -16,6 +16,7 @@ Unlike traditional wallet that only verify the user PIN number, Kiki analyzes th
 ## 🛠️ Tech Stack
 
 -Frontend : React - a powerful and flexible JavaScript library.
+
 -AI Engine: XGBoost Classifier – Known for its high performance and speed in handling complex fraud patterns.
 
 -Framework: FastAPI – A modern, high-speed web framework for building our Prediction API.
@@ -26,9 +27,12 @@ Unlike traditional wallet that only verify the user PIN number, Kiki analyzes th
 
 ## 🚀 Future Roadmap
 -Voice-Activated Banking: The wallet will be activated when hear the user voice and special keyword - "Hello Kiki".
+
 -Gamified Financial Literacy: "KiKi Quests": The quest made by Kiki for the user to enjoy the benefit when the quest is completed.
+
 -Community-Based "Micro-Vouching": Add the user as friend in the MonkeyPouch to lower the risk.
 
 ## 👥 The Team: Bug Bunnies
 Shafiqa Aliya Binti Shahrul Azmi - Frontend & UI Design
+
 Nurul Shafiyah Binti Zulkarnain - AI Research & Backend Engineering
