@@ -3,7 +3,7 @@ MonkeyPouch is a behavioral-first e-wallet designed to bridge the trust gap for 
 
 
 ## 🌟 The Challenge: Case Study 2
-Millions of individuals in Southeast Asia remain "invisible" to traditional banks due to a lack of formal credit history. This makes them highly vulnerable to digital scams. MonkeyPouch provides a safe entry point into the digital economy by replacing rigid paperwork with Real-Time Behavioral AI.
+Millions of individuals in Southeast Asia are "digitally invisible," lacking formal credit histories and bank accounts. This makes them highly vulnerable to phishing and scams, as traditional banking apps are often too intimidating. Without a "safety net," many are afraid to move from cash to digital.
 
 ## 🛡️ Core Feature: KiKi Shield
 Unlike traditional wallet that only verify the user PIN number, Kiki analyzes the behaviour behind the transactions. 
