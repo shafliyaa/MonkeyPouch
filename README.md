@@ -7,7 +7,9 @@ Millions of individuals in Southeast Asia remain "invisible" to traditional bank
 
 ## 🛡️ Core Feature: KiKi Shield
 Unlike traditional wallet that only verify the user PIN number, Kiki analyzes the behaviour behind the transactions. 
+
 - Transaction Frequency: Detect if the transactions is happening too frequent and exceed the normal transactions per day.
+  
 - Magnitude Analysis: Flags unusual amounts that differ from the amount the user usually send.
 - Blacklist Integration: Instantly blocks known fraudulent IDs.
 
