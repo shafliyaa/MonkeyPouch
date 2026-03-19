@@ -16,9 +16,13 @@ Unlike traditional wallet that only verify the user PIN number, Kiki analyzes th
 ## 🛠️ Tech Stack
 
 -Frontend : React - a powerful and flexible JavaScript library.
+
 -AI Engine: XGBoost Classifier – Known for its high performance and speed in handling complex fraud patterns.
+
 -Framework: FastAPI – A modern, high-speed web framework for building our Prediction API.
+
 -Data Processing: Pandas & NumPy – Used for efficient data manipulation and feature engineering.
+
 -Connectivity: Ngrok – Utilized as a secure tunnel to connect our local AI server to the live web frontend.
 
 ## 🚀 Future Roadmap
