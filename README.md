@@ -14,17 +14,17 @@ Unlike traditional wallet that only verify the user PIN number, Kiki analyzes th
 - Blacklist Integration: Instantly blocks known fraudulent IDs.
 
 ## 🛠️ Tech Stack
-m
 
--Frontend : React - a powerful and flexible JavaScript library.
 
--AI Engine: XGBoost Classifier – Known for its high performance and speed in handling complex fraud patterns.
+- Frontend : React - a powerful and flexible JavaScript library.
 
--Framework: FastAPI – A modern, high-speed web framework for building our Prediction API.
+- AI Engine: XGBoost Classifier – Known for its high performance and speed in handling complex fraud patterns.
 
--Data Processing: Pandas & NumPy – Used for efficient data manipulation and feature engineering.
+- Framework: FastAPI – A modern, high-speed web framework for building our Prediction API.
 
--Connectivity: Ngrok – Utilized as a secure tunnel to connect our local AI server to the live web frontend.
+- Data Processing: Pandas & NumPy – Used for efficient data manipulation and feature engineering.
+
+- Connectivity: Ngrok – Utilized as a secure tunnel to connect our local AI server to the live web frontend.
 
 ## 🚀 Future Roadmap
 
