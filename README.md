@@ -14,6 +14,7 @@ Unlike traditional wallet that only verify the user PIN number, Kiki analyzes th
 - Blacklist Integration: Instantly blocks known fraudulent IDs.
 
 ## 🛠️ Tech Stack
+m
 
 -Frontend : React - a powerful and flexible JavaScript library.
 
@@ -31,7 +32,7 @@ Unlike traditional wallet that only verify the user PIN number, Kiki analyzes th
 
 -Gamified Financial Literacy: "KiKi Quests": The quest made by Kiki for the user to enjoy the benefit when the quest is completed.
 
--Community-Based "Micro-Vouching": Add the user as friend in the MonkeyPouch to lower the risk.
+-Community-Based "Micro-Vouching": Add new user as friend in MonkeyPouch to lower their account risk.
 
 ## 👥 The Team: Bug Bunnies
 Shafiqa Aliya Binti Shahrul Azmi - Frontend & UI Design
