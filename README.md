@@ -26,6 +26,7 @@ Unlike traditional wallet that only verify the user PIN number, Kiki analyzes th
 -Connectivity: Ngrok – Utilized as a secure tunnel to connect our local AI server to the live web frontend.
 
 ## 🚀 Future Roadmap
+
 -Voice-Activated Banking: The wallet will be activated when hear the user voice and special keyword - "Hello Kiki".
 
 -Gamified Financial Literacy: "KiKi Quests": The quest made by Kiki for the user to enjoy the benefit when the quest is completed.
